@@ -2,7 +2,7 @@ import streamlit as st
 import os
 os.environ["STREAMLIT_WATCHDOG_DISABLE"] = "true"
 import pandas as pd
-from select_top30 import load_consolidated_data, rank_with_forecast, backtest_selector, detect_and_read_raw, find_header_row_with_column, read_with_detected_header
+from Top30_Stocks import load_consolidated_data, rank_with_forecast, backtest_selector, detect_and_read_raw, find_header_row_with_column, read_with_detected_header
 
 
 st.set_page_config(page_title="Top 30 Stock Selector", layout="wide")
