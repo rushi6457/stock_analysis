@@ -2,7 +2,7 @@ import streamlit as st
 import os
 os.environ["STREAMLIT_WATCHDOG_DISABLE"] = "true"
 import pandas as pd
-from select_top30 import load_consolidated_data
+from select_top30 import load_consolidated_data, rank_with_forecast,backtest_selector
 
 st.set_page_config(page_title="Top 30 Stock Selector", layout="wide")
 
@@ -25,7 +25,7 @@ if uploaded_file:
 
     # Buttons
     if st.button("🏆 Run Top 30 Ranking"):
-        ranked_df = rank_stocks(df, top_n=30)
+        ranked_df = rank_with_forecast(df, top_n=30)
         st.subheader("Top 30 Stocks")
         st.dataframe(ranked_df)
 
@@ -38,6 +38,6 @@ if uploaded_file:
         )
 
     if st.button("📊 Run Backtest"):
-        results = backtest_strategy(df)
+        results = backtest_selector(df)
         st.subheader("Backtest Results")
         st.write(results)
